@@ -1,15 +1,20 @@
-# A starter webpack project for React
+# React Satelite Maps
 
-This is a starter project that uses webpack to transpile and bundle ES6 React code. To use, consider this approach:
+This exercise tasks you with building a Satelite PoV (point of view) Viewer. You can consume an API to get the current latitude and longitude of different satelites and show a map directly below the satelite.
 
-* Fork this repo
-* Rename your repo according to the app you're building
+
+## Setup
 
 ```sh
-git clone https://github.com/dev-academy-challenges/[your-app].git
-cd [your-app] && npm install
+git clone https://github.com/dev-academy-challenges/react-satelite-maps.git
+cd react-satelite-maps && npm install
 ```
 
-To start the development server with a watcher that refreshes your browser, run `npm start`. The assets built by webpack are placed in `server/static`. This folder is defined as a static folder in an Express.js server that can be started with `npm run server`.
 
-Additional components should be placed in `client/components`.
+## Next steps
+
+* Kick off an `npm start` and visit [http://localhost:3000](http://localhost:3000) to what you're starting with.
+
+* Check out the scripts in `package.json` so you'll know what command line options you have.
+* Check out the commit history. You'll see this is a fork of [`boilerplate-react-webpack`](https://github.com/dev-academy-challenges/boilerplate-react-webpack).
+
