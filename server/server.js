@@ -1,10 +1,15 @@
-var path = require('path')
 var express = require('express')
 var bodyParser = require('body-parser')
+var cors = require('cors')
+var path = require('path')
 
-var server = express()
+var widgets = require('./routes/widgets')
 
-server.use(bodyParser.json())
-server.use(express.static(path.join(__dirname, '../public')))
+var app = express()
 
-module.exports = server
+app.use(bodyParser.json())
+app.use(cors({origin: 'http://localhost:8080'}))
+app.use(express.static(path.join(__dirname, '../public')))
+app.use('/widgets', widgets)
+
+module.exports = app
