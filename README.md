@@ -1,6 +1,6 @@
-# A starter React project that includes a web API
+# A example React project that calls a local web API
 
-This is a starter project that uses webpack to transpile and bundle ES6 React code. This project also includes a web API exposed through Express.js. 
+This is a starter project that illustrates React components consuming a web API.
 
 
 ## Steps
@@ -9,9 +9,8 @@ To experience this repo in all of its glory:
 
 1. Clone this repo
 2. `npm install` and `cd` into it
-3. In terminal window/tab #1: `npm run server`
-4. In terminal window/tab #2: `npm start`
-5. Navigate to [http://localhost:8080](http://localhost:8080)
+4. `npm start`
+5. Navigate to [http://localhost:3000](http://localhost:3000)
 
 
 ## Exercise options
@@ -23,6 +22,14 @@ To experience this repo in all of its glory:
 * Add more components and write tests for them in `test`. The tests can be run with `npm test`.
 
 
-## FYI
+## CORS
 
-* The server on port 3000 is configured with CORS to allow the client requests from port 8080. See `server/server.js` for details. This is only needed if you're using the webpack-dev-server (`npm start`).
+Using `npm start`, the client is served from the same the port as the API. In this scenario we don't run into the limitations of CORS (cross-origin resource sharing). However, if we want to expose our API to clients hosted at different domain names and/or ports, we must enable this by configuring our CORS configuration.
+
+To experience the effects of CORS:
+
+* Run `npm start` in one terminal to expose the API on port 3000.
+* Run `npm run dev` in a different terminal to serve the client on port 8080.
+* Visit [http://localhost:8080](http://localhost:8080) and the site should continue to work fine.
+* Have a look at how the Express middleware uses the `cors` package in `server/server.js`. Try commenting out that line and restarting `npm start`. Refresh the app and you should see errors. Read more about how to configure the [`cors` package](https://npmjs.org/package/cors) and try different configurations.
+
