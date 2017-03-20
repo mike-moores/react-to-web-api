@@ -7,7 +7,8 @@
   "scripts": {
     "start": "nodemon --watch server server/index & webpack --watch",
     "test": "tape -r babel-register 'test/**/*.test.js' | tap-diff",
-    "watch": "nodemon -e js,jsx -x npm test"
+    "watch": "nodemon -e js,jsx -x npm test",
+    "postinstall": "mkdir public/leaflet && SRC=node_modules/leaflet/dist && DST=public/leaflet && cp -R $SRC/images $DST/images && cp $SRC/leaflet* $DST"
   },
   "babel": {
     "presets": [
@@ -25,6 +26,7 @@
     "babel-register": "^6.18.0",
     "enzyme": "^2.7.0",
     "jsx-loader": "^0.13.2",
+    "leaflet": "^1.0.3",
     "nodemon": "^1.11.0",
     "react": "^15.4.2",
     "react-addons-test-utils": "^15.4.2",
