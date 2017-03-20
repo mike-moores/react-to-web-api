@@ -9,17 +9,19 @@ To experience this repo in all of its glory:
 
 1. Clone this repo
 2. `npm install` and `cd` into it
-4. `npm start`
-5. Navigate to [http://localhost:3000](http://localhost:3000)
+3. `npm start`
+4. Navigate to [http://localhost:3000](http://localhost:3000)
 
 
 ## Exercise options
 
-* Add more endpoints routes to `server/routes/widgets.js` and consume them from the client. For example, add a form to add a new widget.
-
-* Add application state to manage what is being shown (the list, details, a form to add new widgets). Additional components should be placed in `client/components`.
-
-* Add more components and write tests for them in `test`. The tests can be run with `npm test`.
+* Understand where and how each component is being used
+  - Make small changes to confirm your hypotheses
+  - Reset all changes you've made since last commit with `git checkout .`
+* Extend the details that are stored in widgets - add a `rating` field to what is dislayed and to the forms
+* Add the ability to destroy / delete a widget
+* Add the ability to update a widget
+* Add more components and write tests for them in `test` (the tests can be run with `npm test`)
 
 
 ## CORS
