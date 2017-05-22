@@ -19,7 +19,7 @@ export default class App extends React.Component {
   }
 
   componentDidMount () {
-    this.renderWidgets()
+    this.refreshList()
   }
 
   renderWidgets (err, widgets) {
