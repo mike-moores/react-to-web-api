@@ -6,9 +6,13 @@
   "main": "server/index.js",
   "scripts": {
     "start": "nodemon --watch server server/index & webpack --watch",
-    "test": "tape -r babel-register 'test/**/*.test.js' | tap-diff",
+    "test": "ava 'test/**/*.test.js'",
     "watch": "nodemon -e js,jsx -x npm test",
     "dev": "webpack-dev-server --hot --inline --content-base public"
+  },
+  "ava": {
+    "require": "babel-register",
+    "babel": "inherit"
   },
   "babel": {
     "presets": [
@@ -19,6 +23,7 @@
   "author": "EDA",
   "license": "ISC",
   "devDependencies": {
+    "ava": "^0.19.1",
     "babel-core": "^6.21.0",
     "babel-loader": "^6.2.10",
     "babel-preset-es2015": "^6.18.0",
@@ -28,7 +33,6 @@
     "jsx-loader": "^0.13.2",
     "nodemon": "^1.11.0",
     "react": "^15.4.2",
-    "react-addons-test-utils": "^15.4.2",
     "react-dom": "^15.4.2",
     "tap-diff": "^0.1.1",
     "tape": "^4.6.3",
