@@ -7,7 +7,7 @@ import WidgetDetails from './WidgetDetails'
 import ErrorMessage from './ErrorMessage'
 
 export default class App extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
       error: null,
@@ -19,7 +19,7 @@ export default class App extends React.Component {
   }
 
   componentDidMount () {
-    api.getWidgets(this.renderWidgets.bind(this))
+    this.renderWidgets()
   }
 
   renderWidgets (err, widgets) {
@@ -43,25 +43,6 @@ export default class App extends React.Component {
     })
   }
 
-  render () {
-    return (
-      <div>
-        <ErrorMessage error={this.state.error} />
-        <h1>Widgets FTW!</h1>
-        <WidgetList
-          showDetails={this.showDetails}
-          widgets={this.state.widgets} />
-        <p><a href='#' onClick={(e) => this.showAddWidget(e)}>Add widget</a></p>
-        {this.state.addWidgetVisible && <AddWidget
-          finishAdd={this.refreshList} />}
-        {this.state.detailsVisible && <WidgetDetails
-          isVisible={this.state.detailsVisible}
-          hideDetails={this.hideDetails}
-          widget={this.state.activeWidget} />}
-      </div>
-    )
-  }
-
   showDetails (widget) {
     this.setState({
       activeWidget: widget,
@@ -73,5 +54,24 @@ export default class App extends React.Component {
     this.setState({
       detailsVisible: false
     })
+  }
+
+  render () {
+    return (
+      <div>
+        <ErrorMessage error={this.state.error} />
+        <h1>Widgets FTW!</h1>
+        <WidgetList
+          showDetails={this.showDetails.bind(this)}
+          widgets={this.state.widgets} />
+        <p><a href='#' onClick={(e) => this.showAddWidget(e)}>Add widget</a></p>
+        {this.state.addWidgetVisible && <AddWidget
+          finishAdd={this.refreshList.bind(this)} />}
+        {this.state.detailsVisible && <WidgetDetails
+          isVisible={this.state.detailsVisible}
+          hideDetails={this.hideDetails.bind(this)}
+          widget={this.state.activeWidget} />}
+      </div>
+    )
   }
 }

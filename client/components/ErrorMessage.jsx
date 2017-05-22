@@ -10,7 +10,7 @@ export default class ErrorMessage extends React.Component {
     let errorView = null
     if (this.props.error) {
       errorView = (
-        <div className="error">
+        <div className='error'>
           Error: {this.props.error.message}
         </div>
       )
