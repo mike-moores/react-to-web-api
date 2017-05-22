@@ -6,41 +6,42 @@ import WidgetList from './WidgetList'
 import WidgetDetails from './WidgetDetails'
 import ErrorMessage from './ErrorMessage'
 
-export default React.createClass({
-  getInitialState () {
-    return {
+export default class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
       error: null,
       widgets: [],
       activeWidget: null,
       detailsVisible: false,
       addWidgetVisible: false
     }
-  },
+  }
 
   componentDidMount () {
-    api.getWidgets(this.renderWidgets)
-  },
+    api.getWidgets(this.renderWidgets.bind(this))
+  }
 
   renderWidgets (err, widgets) {
     this.setState({
       error: err,
-      widgets: widgets
+      widgets: widgets || []
     })
-  },
+  }
 
   refreshList (err) {
     this.setState({
       error: err,
       addWidgetVisible: false
     })
-    api.getWidgets(this.renderWidgets)
-  },
+    api.getWidgets(this.renderWidgets.bind(this))
+  }
 
   showAddWidget () {
     this.setState({
       addWidgetVisible: true
     })
-  },
+  }
 
   render () {
     return (
@@ -50,7 +51,7 @@ export default React.createClass({
         <WidgetList
           showDetails={this.showDetails}
           widgets={this.state.widgets} />
-        <p><a href='#' onClick={this.showAddWidget}>Add widget</a></p>
+        <p><a href='#' onClick={(e) => this.showAddWidget(e)}>Add widget</a></p>
         {this.state.addWidgetVisible && <AddWidget
           finishAdd={this.refreshList} />}
         {this.state.detailsVisible && <WidgetDetails
@@ -59,19 +60,18 @@ export default React.createClass({
           widget={this.state.activeWidget} />}
       </div>
     )
-  },
+  }
 
   showDetails (widget) {
     this.setState({
       activeWidget: widget,
       detailsVisible: true
     })
-  },
+  }
 
   hideDetails () {
     this.setState({
       detailsVisible: false
     })
   }
-
-})
+}

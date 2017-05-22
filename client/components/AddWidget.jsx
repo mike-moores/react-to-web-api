@@ -2,69 +2,53 @@ import React from 'react'
 
 import api from '../api'
 
-export default React.createClass({
-  getInitialState () {
-    return {
+export default class AddWidget extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
       name: '',
       price: '',
       mfg: '',
       inStock: ''
     }
-  },
+  }
 
-  render () {
-    return (
-      <div className="add-widget">
-        <form>
-          <p><input placeholder="Name"
-            onChange={this.nameChanged}
-            value={this.state.name}
-            /></p>
-          <p><input placeholder="Price"
-            onChange={this.priceChanged}
-            value={this.state.price}
-            /></p>
-          <p><input placeholder="Manufacturer"
-            onChange={this.mfgChanged}
-            value={this.state.mfg}
-            /></p>
-          <p><input placeholder="In stock"
-            onChange={this.inStockChanged}
-            value={this.state.inStock}
-            /></p>
-          <button onClick={this.addWidget}>Add widget</button> {' '}
-          <a href="#" onClick={this.props.finishAdd}>Cancel</a>
-        </form>
-      </div>
-    )
-  },
-
-  nameChanged (e) {
+  fieldChanged (e) {
     this.setState({
-      name: e.target.value
+      ...this.state,
+      [e.target.name]: e.target.value
     })
-  },
-
-  priceChanged (e) {
-    this.setState({
-      price: e.target.value
-    })
-  },
-
-  mfgChanged (e) {
-    this.setState({
-      mfg: e.target.value
-    })
-  },
-
-  inStockChanged (e) {
-    this.setState({
-      inStock: e.target.value
-    })
-  },
+  }
 
   addWidget () {
     const widget = this.state
     api.appendWidget(widget, this.props.finishAdd)
   }
-})
+
+  render () {
+    return (
+      <div className="add-widget">
+        <form>
+          <p><input placeholder="Name" name='name'
+            onChange={e => this.fieldChanged(e)}
+            value={this.state.name}
+            /></p>
+          <p><input placeholder="Price" name='price'
+            onChange={e => this.fieldChanged(e)}
+            value={this.state.price}
+            /></p>
+          <p><input placeholder="Manufacturer" name='mfg'
+            onChange={e => this.fieldChanged(e)}
+            value={this.state.mfg}
+            /></p>
+          <p><input placeholder="In stock" name='inStock'
+            onChange={e => this.fieldChanged(e)}
+            value={this.state.inStock}
+            /></p>
+          <button onClick={e => this.addWidget(e)}>Add widget</button> {' '}
+          <a href="#" onClick={this.props.finishAdd}>Cancel</a>
+        </form>
+      </div>
+    )
+  }
+}
