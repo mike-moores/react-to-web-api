@@ -34,7 +34,7 @@ export default class App extends React.Component {
       error: err,
       addWidgetVisible: false
     })
-    api.getWidgets(this.renderWidgets)
+    api.getWidgets(this.renderWidgets.bind(this))
   }
 
   showAddWidget () {
