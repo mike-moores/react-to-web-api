@@ -25,7 +25,7 @@ export default class App extends React.Component {
   renderWidgets (err, widgets) {
     this.setState({
       error: err,
-      widgets: widgets
+      widgets: widgets || []
     })
   }
 
