@@ -6,7 +6,7 @@
   "main": "server/index.js",
   "scripts": {
     "start": "nodemon --watch server server/index & webpack --watch",
-    "test": "ava -t 'test/**/*.test.js' | tap-diff",
+    "test": "ava -v 'test/**/*.test.js'",
     "watch": "nodemon -e js,jsx -x npm test",
     "dev": "webpack-dev-server --hot --inline --content-base public"
   },
@@ -37,7 +37,6 @@
     "react-dom": "^15.5.4",
     "react-test-renderer": "^15.5.4",
     "supertest": "^3.0.0",
-    "tap-diff": "^0.1.1",
     "webpack": "^1.14.0",
     "webpack-dev-server": "^1.14.1"
   },
