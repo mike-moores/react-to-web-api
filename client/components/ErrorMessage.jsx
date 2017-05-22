@@ -1,9 +1,10 @@
 import React from 'react'
 
-export default React.createClass({
+export default class ErrorMessage extends React.Component {
+
   shouldComponentUpdate () {
     return this.props.error
-  },
+  }
 
   render () {
     let errorView = null
@@ -18,4 +19,4 @@ export default React.createClass({
       errorView
     )
   }
-})
+}
