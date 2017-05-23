@@ -12,7 +12,7 @@ To experience this repo in all of its glory:
 ```sh
 cd react-to-web-api
 npm install
-npm start
+npm run dev
 ```
 
 * Navigate to [http://localhost:3000](http://localhost:3000)
