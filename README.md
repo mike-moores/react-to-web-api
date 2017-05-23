@@ -9,7 +9,7 @@ To experience this repo in all of its glory:
 
 1. Clone this repo
 2. `npm install` and `cd` into it
-3. `npm start`
+3. `npm run dev`
 4. Navigate to [http://localhost:3000](http://localhost:3000)
 
 
