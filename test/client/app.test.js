@@ -5,6 +5,8 @@ import { shallow, mount } from 'enzyme'
 
 import App from '../../client/components/App'
 
+App.prototype.componentDidMount = () => {}
+
 test('<App />', t => {
   const wrapper = shallow(<App />)
   t.is(wrapper.find('h1').text(), 'Widgets FTW!')

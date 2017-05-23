@@ -20,7 +20,8 @@ export default class AddWidget extends React.Component {
     })
   }
 
-  addWidget () {
+  addWidget (e) {
+    e.preventDefault()
     const widget = this.state
     api.appendWidget(widget, this.props.finishAdd)
   }
