@@ -3,7 +3,7 @@ import React from 'react'
 export default (props) => {
   const {widget, isVisible} = props
   const hide = () => props.hideDetails()
-  const classes = "widget-details " + isVisble ? 'visible' : 'hidden'
+  const classes = 'widget-details ' + isVisble ? 'visible' : 'hidden'
   return (
     <div className={classes}>
       <h2>Details</h2>
@@ -11,7 +11,7 @@ export default (props) => {
       <p>Price: {widget.price}</p>
       <p>Mfg: {widget.mfg}</p>
       <p>In stock: {widget.inStock}</p>
-      <a href="#" onClick={hide}>Close</a>
+      <a href='#' onClick={hide}>Close</a>
     </div>
   )
 }
