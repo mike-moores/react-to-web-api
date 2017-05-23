@@ -7,12 +7,19 @@ import App from '../../client/components/App'
 
 App.prototype.componentDidMount = () => {}
 
-test('<App />', t => {
+test('Shows heading', t => {
   const wrapper = shallow(<App />)
   t.is(wrapper.find('h1').text(), 'Widgets FTW!')
 })
 
-test('mount <App />', t => {
+test('Renders widget list', t => {
   const wrapper = mount(<App />)
   t.is(wrapper.find('.widget-list').exists(), true)
+})
+
+test('Renders add form when clicked', t => {
+  const wrapper = mount(<App />)
+  t.is(wrapper.find('.add-widget').exists(), false)
+  wrapper.find('#show-widget-link').simulate('click')
+  t.is(wrapper.find('.add-widget').exists(), true)
 })
