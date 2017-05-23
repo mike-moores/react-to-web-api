@@ -1,10 +1,11 @@
 import React from 'react'
 
-import api from '../api'
 import AddWidget from './AddWidget'
 import WidgetList from './WidgetList'
 import WidgetDetails from './WidgetDetails'
 import ErrorMessage from './ErrorMessage'
+
+import {getWidgets} from '../api'
 
 export default class App extends React.Component {
   constructor (props) {
@@ -34,7 +35,7 @@ export default class App extends React.Component {
       error: err,
       addWidgetVisible: false
     })
-    api.getWidgets(this.renderWidgets.bind(this))
+    getWidgets(this.renderWidgets.bind(this))
   }
 
   showAddWidget () {
