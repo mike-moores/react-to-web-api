@@ -66,7 +66,7 @@ export default class App extends React.Component {
           showDetails={this.showDetails.bind(this)}
           widgets={this.state.widgets} />
 
-        <p><a href='#' onClick={(e) => this.showAddWidget(e)}>Add widget</a></p>
+        <p><a id='show-widget-link' href='#' onClick={(e) => this.showAddWidget(e)}>Add widget</a></p>
 
         {this.state.addWidgetVisible && <AddWidget
           finishAdd={this.refreshList.bind(this)} />}
