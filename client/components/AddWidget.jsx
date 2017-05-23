@@ -1,6 +1,6 @@
 import React from 'react'
 
-import api from '../api'
+import {appendWidget} from '../api'
 
 export default class AddWidget extends React.Component {
   constructor (props) {
@@ -23,7 +23,7 @@ export default class AddWidget extends React.Component {
   addWidget (e) {
     e.preventDefault()
     const widget = this.state
-    api.appendWidget(widget, this.props.finishAdd)
+    appendWidget(widget, this.props.finishAdd)
   }
 
   render () {
