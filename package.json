@@ -1,15 +1,15 @@
 {
-  "name": "boilerplate-react-webpack",
+  "name": "boilerplate-react-to-web-api",
   "version": "0.1.1",
-  "description": "A webpack React starter",
-  "repository": "https://github.com/dev-academy-challenges/boilerplate-react-webpack.git",
+  "description": "A React starter for web APIs",
+  "repository": "https://github.com/dev-academy-challenges/boilerplate-react-to-web-api.git",
   "main": "server/index.js",
   "scripts": {
-    "dev": "nodemon --watch server server/index & webpack --watch",
+    "dev": "nodemon --watch server & webpack --watch",
     "dev-client": "webpack-dev-server --hot --inline --content-base public",
-    "dev-server": "nodemon --watch server server/index",
+    "dev-server": "nodemon --watch server",
     "test": "ava -v 'test/**/*.test.js'",
-    "start": "node server/index"
+    "start": "node server"
   },
   "ava": {
     "require": "babel-register",
