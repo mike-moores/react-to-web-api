@@ -10,6 +10,6 @@ var app = express()
 app.use(bodyParser.json())
 app.use(cors({origin: 'http://localhost:8080'}))
 app.use(express.static(path.join(__dirname, '../public')))
-app.use('/widgets', widgets)
+app.use('/api/v1/widgets', widgets)
 
 module.exports = app
