@@ -4,6 +4,7 @@ export default (props) => {
   const {widget, isVisible} = props
   const hide = () => props.hideDetails()
   const classes = 'widget-details ' + (isVisible ? 'visible' : 'hidden')
+
   return (
     <div className={classes}>
       <h2>Details</h2>

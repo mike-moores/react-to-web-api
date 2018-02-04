@@ -10,6 +10,7 @@ import {getWidgets} from '../api'
 export default class App extends React.Component {
   constructor (props) {
     super(props)
+
     this.state = {
       error: null,
       widgets: [],
@@ -17,6 +18,11 @@ export default class App extends React.Component {
       detailsVisible: false,
       addWidgetVisible: false
     }
+
+    this.refreshList = this.refreshList.bind(this)
+    this.showDetails = this.showDetails.bind(this)
+    this.hideDetails = this.hideDetails.bind(this)
+    this.renderWidgets = this.renderWidgets.bind(this)
   }
 
   componentDidMount () {
@@ -35,7 +41,7 @@ export default class App extends React.Component {
       error: err,
       addWidgetVisible: false
     })
-    getWidgets(this.renderWidgets.bind(this))
+    getWidgets(this.renderWidgets)
   }
 
   showAddWidget () {
@@ -64,17 +70,17 @@ export default class App extends React.Component {
         <h1>Widgets FTW!</h1>
 
         <WidgetList
-          showDetails={this.showDetails.bind(this)}
+          showDetails={this.showDetails}
           widgets={this.state.widgets} />
 
         <p><a id='show-widget-link' href='#' onClick={(e) => this.showAddWidget(e)}>Add widget</a></p>
 
         {this.state.addWidgetVisible && <AddWidget
-          finishAdd={this.refreshList.bind(this)} />}
+          finishAdd={this.refreshList} />}
 
         {this.state.detailsVisible && <WidgetDetails
           isVisible={this.state.detailsVisible}
-          hideDetails={this.hideDetails.bind(this)}
+          hideDetails={this.hideDetails}
           widget={this.state.activeWidget} />}
 
       </div>
