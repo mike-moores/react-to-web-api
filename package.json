@@ -1,51 +1,44 @@
 {
-  "name": "boilerplate-react-to-web-api",
-  "version": "0.1.1",
-  "description": "A React starter for web APIs",
-  "repository": "https://github.com/dev-academy-challenges/boilerplate-react-to-web-api.git",
+  "name": "react-to-web-api",
+  "version": "0.2.1",
+  "description": "A React demo with web APIs",
+  "repository": "https://github.com/dev-academy-challenges/react-to-web-api.git",
   "main": "server/index.js",
   "scripts": {
     "dev": "nodemon --watch server & webpack --watch",
     "dev-client": "webpack-dev-server --hot --inline --content-base public",
     "dev-server": "nodemon --watch server",
-    "test": "ava -v 'test/**/*.test.js'",
+    "test": "jest --watchAll",
     "start": "node server"
-  },
-  "ava": {
-    "require": "babel-register",
-    "babel": "inherit"
   },
   "babel": {
     "presets": [
-      "es2015",
-      "react",
-      "stage-0"
+      "env",
+      "react"
     ]
   },
   "author": "EDA",
   "license": "ISC",
   "devDependencies": {
-    "ava": "^0.19.1",
-    "babel-core": "^6.21.0",
-    "babel-loader": "^6.2.10",
-    "babel-preset-es2015": "^6.18.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1",
-    "babel-register": "^6.18.0",
-    "enzyme": "^2.8.2",
-    "jsdom": "^11.0.0",
-    "nodemon": "^1.11.0",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
-    "react-test-renderer": "^15.5.4",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "jest": "^22.1.4",
+    "jsdom": "^11.6.2",
+    "nodemon": "^1.14.12",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
     "supertest": "^3.0.0",
-    "webpack": "^1.14.0",
-    "webpack-dev-server": "^1.14.1"
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.11.1"
   },
   "dependencies": {
-    "body-parser": "^1.15.2",
-    "cors": "^2.7.1",
-    "express": "^4.14.0",
-    "superagent": "^2.0.0"
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "superagent": "^3.8.2"
   }
 }

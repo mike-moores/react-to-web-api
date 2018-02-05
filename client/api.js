@@ -1,6 +1,6 @@
 import request from 'superagent'
 
-var widgetUrl = 'http://localhost:3000/api/v1/widgets'
+const widgetUrl = 'http://localhost:3000/api/v1/widgets'
 
 export function getWidgets (callback) {
   request
@@ -18,3 +18,4 @@ export function appendWidget (widget, callback) {
       callback(err)
     })
 }
+

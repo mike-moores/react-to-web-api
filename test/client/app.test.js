@@ -1,35 +1,40 @@
 import './setup-dom'
-import test from 'ava'
 import React from 'react'
-import { shallow, mount, render } from 'enzyme'
+import Enzyme, {shallow, mount, render} from 'enzyme'
+import Adapter from 'enzyme-adapter-react-16'
 
 import App from '../../client/components/App'
 
+Enzyme.configure({adapter: new Adapter()})
+
 App.prototype.componentDidMount = () => {}
 
-test('Shows heading', t => {
+test('Shows heading', () => {
   const wrapper = shallow(<App />)
-  t.is(wrapper.find('h1').text(), 'Widgets FTW!')
+  expect(wrapper.find('h1').text()).toBe('Widgets FTW!')
 })
 
-test('Renders widget list', t => {
+test('Renders widget list', () => {
   const wrapper = mount(<App />)
-  t.is(wrapper.find('.widget-list').exists(), true)
+  expect(wrapper.find('.widget-list').exists()).toBeTruthy()
 })
 
-test('Renders add form when clicked', t => {
+test('Renders add form when clicked', () => {
   const wrapper = mount(<App />)
-  t.is(wrapper.find('.add-widget').exists(), false)
+  expect(wrapper.find('.add-widget').exists()).toBeFalsy()
   wrapper.find('#show-widget-link').simulate('click')
-  t.is(wrapper.find('.add-widget').exists(), true)
+  expect(wrapper.find('.add-widget').exists()).toBeTruthy()
 })
 
-test('Shows widget details', t=> {
+test('Shows widget details', () => {
   const widgets = [{name: 'red', id: 1}, {name: 'blue', id: 2}]
   const wrapper = mount(<App />)
   wrapper.setState({widgets})
-  t.is(wrapper.find('.widget-details').exists(), false)
+  expect(wrapper.find('.widget-details').exists()).toBeFalsy()
 
   wrapper.instance().showDetails(widgets[0])
-  t.is(wrapper.find('.widget-details').exists(), true)
+  wrapper.mount()
+
+  expect(wrapper.find('.widget-details').exists()).toBeTruthy()
 })
+

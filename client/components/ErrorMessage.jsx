@@ -1,22 +1,21 @@
 import React from 'react'
 
 export default class ErrorMessage extends React.Component {
-
   shouldComponentUpdate () {
     return !!this.props.error
   }
 
   render () {
+    const {error} = this.props
     let errorView = null
-    if (this.props.error) {
+    if (error) {
       errorView = (
         <div className='error'>
-          Error: {this.props.error.message}
+          Error: {error.message}
         </div>
       )
     }
-    return (
-      errorView
-    )
+    return errorView
   }
 }
+

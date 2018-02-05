@@ -11,19 +11,18 @@ export default class AddWidget extends React.Component {
       mfg: '',
       inStock: ''
     }
+    this.handleChange = this.handleChange.bind(this)
+    this.addWidget = this.addWidget.bind(this)
   }
 
-  fieldChanged (e) {
-    e.preventDefault()
+  handleChange (e) {
     this.setState({
       [e.target.name]: e.target.value
     })
   }
 
   addWidget (e) {
-    e.preventDefault()
-    const widget = this.state
-    appendWidget(widget, this.props.finishAdd)
+    appendWidget(this.state, this.props.finishAdd)
   }
 
   render () {
@@ -31,25 +30,27 @@ export default class AddWidget extends React.Component {
       <div className='add-widget'>
         <form>
           <p><input placeholder='Name' name='name'
-            onChange={e => this.fieldChanged(e)}
+            onChange={this.handleChange}
             value={this.state.name}
-            /></p>
+          /></p>
           <p><input placeholder='Price' name='price'
-            onChange={e => this.fieldChanged(e)}
+            onChange={this.handleChange}
             value={this.state.price}
-            /></p>
+          /></p>
           <p><input placeholder='Manufacturer' name='mfg'
-            onChange={e => this.fieldChanged(e)}
+            onChange={this.handleChange}
             value={this.state.mfg}
-            /></p>
+          /></p>
           <p><input placeholder='In stock' name='inStock'
-            onChange={e => this.fieldChanged(e)}
+            onChange={this.handleChange}
             value={this.state.inStock}
-            /></p>
-          <button onClick={e => this.addWidget(e)}>Add widget</button> {' '}
+          /></p>
+          <button type='button' onClick={this.addWidget}>Add widget</button>
+          {' '}
           <a href='#' onClick={this.props.finishAdd}>Cancel</a>
         </form>
       </div>
     )
   }
 }
+

@@ -1,35 +1,30 @@
-import test from 'ava'
+/* global test expect */
 import request from 'supertest'
 
 import app from '../../server/server'
 
 // the server keeps the widgets in memory so no knex setup needed
 
-test.serial.cb('GET /widgets', t => {
-  request(app)
-    .get('/widgets')
+test('GET /api/v1/widgets', () => {
+  return request(app)
+    .get('/api/v1/widgets')
     .expect(200)
-    .end((err, res) => {
-      t.is(res.body.length, 3)
-      t.ifError(err)
-      t.end()
+    .then(res => {
+      expect(res.body.length).toBe(3)
     })
 })
 
-test.serial.cb('POST /widgets', t => {
-  request(app)
-    .post('/widgets')
+test('POST /api/v1/widgets', () => {
+  return request(app)
+    .post('/api/v1/widgets')
     .send({name: 'test'})
     .expect(200)
-    .end((err, res) => {
-      if (!err) {
-        request(app)
-          .get('/widgets').end((err, res) => {
-            t.ifError(err)
-            t.is(res.body.length, 4)
-            t.end()
-          })
-      }
+    .then(res => {
+      return request(app)
+        .get('/api/v1/widgets')
+        .then(res => {
+          expect(res.body.length).toBe(4)
+        })
     })
 })
 

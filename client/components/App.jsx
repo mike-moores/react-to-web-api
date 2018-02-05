@@ -23,6 +23,7 @@ export default class App extends React.Component {
     this.showDetails = this.showDetails.bind(this)
     this.hideDetails = this.hideDetails.bind(this)
     this.renderWidgets = this.renderWidgets.bind(this)
+    this.showAddWidget = this.showAddWidget.bind(this)
   }
 
   componentDidMount () {
@@ -67,13 +68,17 @@ export default class App extends React.Component {
     return (
       <div>
         <ErrorMessage error={this.state.error} />
+
         <h1>Widgets FTW!</h1>
 
         <WidgetList
           showDetails={this.showDetails}
           widgets={this.state.widgets} />
 
-        <p><a id='show-widget-link' href='#' onClick={(e) => this.showAddWidget(e)}>Add widget</a></p>
+        <p>
+          <a id='show-widget-link' href='#'
+            onClick={this.showAddWidget}>Add widget</a>
+        </p>
 
         {this.state.addWidgetVisible && <AddWidget
           finishAdd={this.refreshList} />}
@@ -82,8 +87,8 @@ export default class App extends React.Component {
           isVisible={this.state.detailsVisible}
           hideDetails={this.hideDetails}
           widget={this.state.activeWidget} />}
-
       </div>
     )
   }
 }
+

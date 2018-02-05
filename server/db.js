@@ -1,6 +1,6 @@
 module.exports = {
-  getWidgets: getWidgets,
-  saveWidget: saveWidget
+  getWidgets,
+  saveWidget
 }
 
 var widgets = [{
@@ -31,3 +31,4 @@ function saveWidget (widget) {
   widget.id = widgets.length + 1
   widgets.push(widget)
 }
+
