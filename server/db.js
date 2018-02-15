@@ -31,4 +31,3 @@ function saveWidget (widget) {
   widget.id = widgets.length + 1
   widgets.push(widget)
 }
-

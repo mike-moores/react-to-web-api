@@ -18,4 +18,3 @@ export function appendWidget (widget, callback) {
       callback(err)
     })
 }
-

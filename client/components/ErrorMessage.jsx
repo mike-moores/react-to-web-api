@@ -18,4 +18,3 @@ export default class ErrorMessage extends React.Component {
     return errorView
   }
 }
-

@@ -53,4 +53,3 @@ export default class AddWidget extends React.Component {
     )
   }
 }
-

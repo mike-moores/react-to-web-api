@@ -1,4 +1,3 @@
-/* global test expect */
 import request from 'supertest'
 
 import app from '../../server/server'
@@ -27,4 +26,3 @@ test('POST /api/v1/widgets', () => {
         })
     })
 })
-

@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default (props) => {
+export default function WidgetDetails (props) {
   const {widget, isVisible, hideDetails} = props
   const classes = 'widget-details ' + (isVisible ? 'visible' : 'hidden')
 
@@ -15,4 +15,3 @@ export default (props) => {
     </div>
   )
 }
-

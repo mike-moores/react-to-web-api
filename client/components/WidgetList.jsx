@@ -2,7 +2,7 @@ import React from 'react'
 
 import WidgetListItem from './WidgetListItem'
 
-export default (props) => {
+export default function WidgetList (props) {
   return (
     <div className='widget-list'>
       <h2>List</h2>
@@ -16,4 +16,3 @@ export default (props) => {
     </div>
   )
 }
-

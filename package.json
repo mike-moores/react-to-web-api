@@ -17,6 +17,11 @@
       "react"
     ]
   },
+  "jest": {
+    "setupFiles": [
+      "./tests/client/setup-dom.js"
+    ]
+  },
   "author": "EDA",
   "license": "ISC",
   "devDependencies": {
