@@ -3,7 +3,7 @@ module.exports = {
   saveWidget
 }
 
-var widgets = [{
+const widgets = [{
   id: 1,
   name: 'Red widget',
   price: 23.45,
