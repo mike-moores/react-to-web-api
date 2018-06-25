@@ -11,8 +11,8 @@ To experience this repo in all of its glory:
 
 ```sh
 cd react-to-web-api
-npm install
-npm run dev
+yarn
+yarn dev
 ```
 
 * Navigate to [http://localhost:3000](http://localhost:3000)
