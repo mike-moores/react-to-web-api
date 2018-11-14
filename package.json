@@ -9,6 +9,7 @@
     "dev-client": "webpack-dev-server --hot --inline --content-base public",
     "dev-server": "nodemon --watch server",
     "test": "jest --watchAll",
+    "knex": "knex --knexfile ./server/db/knexfile.js",
     "start": "node server"
   },
   "babel": {
@@ -44,6 +45,8 @@
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
     "express": "^4.16.2",
+    "knex": "^0.15.2",
+    "sqlite3": "^4.0.4",
     "superagent": "^3.8.2"
   }
 }
