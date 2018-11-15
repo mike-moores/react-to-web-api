@@ -1,9 +1,9 @@
 const express = require('express')
 const router = express.Router()
 
-const db = require("../db/db")
+const db = require('../db/db.js')
 
-router.get("/", function(req, res) {
+router.get('/', function(req, res) {
   db.getWidgets()
     .then(widgets => {
       res.send(widgets)
@@ -13,13 +13,13 @@ router.get("/", function(req, res) {
     })
 })
 
-router.post("/", function(req, res) {
-  db.saveWidget(req.body)
-  // Normally saveWidget would be async and you'd
-  // have to sendStatus in the .then, but in this
-  // implementation, the data is stored in server
-  // memory and is done synchronously.
-  res.sendStatus(200)
-})
+// router.post('/', function(req, res) {
+//   db.saveWidget(req.body)
+//   // Normally saveWidget would be async and you'd
+//   // have to sendStatus in the .then, but in this
+//   // implementation, the data is stored in server
+//   // memory and is done synchronously.
+//   res.sendStatus(200)
+// })
 
 module.exports = router
