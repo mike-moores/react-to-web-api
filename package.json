@@ -13,8 +13,8 @@
   },
   "babel": {
     "presets": [
-      "env",
-      "react"
+      "@babel/preset-env",
+      "@babel/preset-react"
     ]
   },
   "jest": {
@@ -25,26 +25,28 @@
   "author": "EDA",
   "license": "ISC",
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.24.1",
-    "enzyme": "^3.3.0",
-    "enzyme-adapter-react-16": "^1.1.1",
-    "jest": "^22.1.4",
-    "jsdom": "^11.6.2",
-    "nodemon": "^1.14.12",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "supertest": "^3.0.0",
-    "webpack": "^3.10.0",
-    "webpack-dev-server": "^2.11.1"
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.4.2",
+    "babel-loader": "^8.0.5",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.10.0",
+    "jest": "^24.1.0",
+    "jsdom": "^13.2.0",
+    "nodemon": "^1.18.10",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
+    "supertest": "^3.4.2",
+    "webpack": "^4.29.5",
+    "webpack-dev-server": "^3.2.1"
   },
   "dependencies": {
-    "cors": "^2.8.4",
-    "express": "^4.16.2",
-    "knex": "^0.15.2",
-    "sqlite3": "^4.0.4",
-    "superagent": "^3.8.2"
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "knex": "^0.16.3",
+    "sqlite3": "^4.0.6",
+    "superagent": "^4.1.0"
   }
 }
