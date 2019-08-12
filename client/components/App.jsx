@@ -23,6 +23,7 @@ export default class App extends React.Component {
     this.showDetails = this.showDetails.bind(this)
     this.hideDetails = this.hideDetails.bind(this)
     this.renderWidgets = this.renderWidgets.bind(this)
+    this.renderError = this.renderError.bind(this)
     this.showAddWidget = this.showAddWidget.bind(this)
   }
 
@@ -30,10 +31,17 @@ export default class App extends React.Component {
     this.refreshList()
   }
 
-  renderWidgets (err, widgets) {
+  renderWidgets (widgets) {
+    this.setState({
+      error: null,
+      widgets: widgets
+    })
+  }
+
+  renderError (err) {
     this.setState({
       error: err,
-      widgets: widgets || []
+      widgets: []
     })
   }
 
@@ -42,7 +50,14 @@ export default class App extends React.Component {
       error: err,
       addWidgetVisible: false
     })
-    getWidgets(this.renderWidgets)
+    
+    getWidgets()
+      .then(widgets => {
+        this.renderWidgets(widgets)
+      })
+      .catch(err => {
+        this.renderError(err)
+      })
   }
 
   showAddWidget () {
@@ -81,7 +96,7 @@ export default class App extends React.Component {
         </p>
 
         {this.state.addWidgetVisible && <AddWidget
-          finishAdd={this.refreshList} />}
+          refreshList={this.refreshList} />}
 
         {this.state.detailsVisible && <WidgetDetails
           isVisible={this.state.detailsVisible}
