@@ -22,17 +22,18 @@ npm run dev
 
 ## Exercise options
 
-* Understand where and how each component is being used
+* Understand where and how each component is being used (you will find some code you can reuse. Remember DRY!)
 
   - Make small changes to confirm your hypotheses
   - Reset all changes you've made since last commit with `git checkout .`
 
-* The database can be updated by many users. Simulate this by opening a second browser, having one add a record, and make a 'refresh button' on the second one, which updates the records the client side knows about. Example steps: 
+* The database can be updated by many users. Simulate this by making a 'refresh button'. You may have seen some functionality do something similar already. Open a second browser tab and make a new record for the list. Then, click your refresh button on your original tab and see if your component renders the new entry you created.  
+Example steps you may take to complete this task: 
 
   - [ ] 1. Build the button and get it to log something when you click it
-  - [ ] 2. Get the click to send a GET to your API, and get the server to prove it received it 
+  - [ ] 2. Get the click to send a GET request to your API, and get the server to log something to show that the request has been made sucessfully
   - [ ] 3. Get the server to respond with the list of current records/widgets.
-  - [ ] 4. Get the client-side to receive that response, and update the client-side state so you can see all the new records
+  - [ ] 4. Get the client-side to receive the response from the server, and update the client-side state so you can now see all the new records
 
 * Extend the details that are stored in widgets - add a `rating` field to what is displayed and on the add form
 
