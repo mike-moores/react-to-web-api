@@ -33,7 +33,7 @@
     "babel-loader": "^8.0.5",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.12.1",
-    "jest": "^24.7.1",
+    "jest": "^25.1.0",
     "jsdom": "^16.1.0",
     "nodemon": "^1.18.11",
     "react": "^16.8.6",
