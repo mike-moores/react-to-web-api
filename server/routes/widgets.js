@@ -13,9 +13,4 @@ router.get('/', (req, res) => {
     })
 })
 
-router.post('/', (req, res) => {
-  db.saveWidget(req.body)
-    .then(res.sendStatus(200))
-})
-
 module.exports = router

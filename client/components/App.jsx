@@ -1,56 +1,43 @@
 import React from 'react'
 
-import AddWidget from './AddWidget'
 import WidgetList from './WidgetList'
 import WidgetDetails from './WidgetDetails'
 import ErrorMessage from './ErrorMessage'
 
-import {getWidgets} from '../api'
+import { getWidgets } from '../api'
 
 export default class App extends React.Component {
-  constructor (props) {
-    super(props)
-
-    this.state = {
-      error: null,
-      widgets: [],
-      activeWidget: null,
-      detailsVisible: false,
-      addWidgetVisible: false
-    }
-
-    this.refreshList = this.refreshList.bind(this)
-    this.showDetails = this.showDetails.bind(this)
-    this.hideDetails = this.hideDetails.bind(this)
-    this.renderWidgets = this.renderWidgets.bind(this)
-    this.renderError = this.renderError.bind(this)
-    this.showAddWidget = this.showAddWidget.bind(this)
+  state = {
+    error: null,
+    widgets: [],
+    activeWidget: null,
+    detailsVisible: false
   }
 
   componentDidMount () {
     this.refreshList()
   }
 
-  renderWidgets (widgets) {
+  renderWidgets = (widgets) => {
     this.setState({
       error: null,
       widgets: widgets
     })
   }
 
-  renderError (err) {
+  renderError = (err) => {
     this.setState({
       error: err,
       widgets: []
     })
   }
 
-  refreshList (err) {
+  refreshList = (err) => {
     this.setState({
       error: err,
       addWidgetVisible: false
     })
-    
+
     getWidgets()
       .then(widgets => {
         this.renderWidgets(widgets)
@@ -60,20 +47,14 @@ export default class App extends React.Component {
       })
   }
 
-  showAddWidget () {
-    this.setState({
-      addWidgetVisible: true
-    })
-  }
-
-  showDetails (widget) {
+  showDetails = (widget) => {
     this.setState({
       activeWidget: widget,
       detailsVisible: true
     })
   }
 
-  hideDetails () {
+  hideDetails = () => {
     this.setState({
       detailsVisible: false
     })
@@ -89,14 +70,6 @@ export default class App extends React.Component {
         <WidgetList
           showDetails={this.showDetails}
           widgets={this.state.widgets} />
-
-        <p>
-          <a id='show-widget-link' href='#'
-            onClick={this.showAddWidget}>Add widget</a>
-        </p>
-
-        {this.state.addWidgetVisible && <AddWidget
-          refreshList={this.refreshList} />}
 
         {this.state.detailsVisible && <WidgetDetails
           isVisible={this.state.detailsVisible}

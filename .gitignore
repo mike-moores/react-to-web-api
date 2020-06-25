@@ -1,6 +1,4 @@
-node_modules
-static
-npm-debug.log
 bundle.*
-leaflet
-dev.sqlite3*
+dev.sqlite3
+node_modules
+npm-debug.log

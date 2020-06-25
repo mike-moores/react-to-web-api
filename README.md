@@ -1,31 +1,24 @@
-# A example React project that calls a local web API
+# Consuming a local Web API from React components
 
-This is a starter project that illustrates React components consuming a web API.
+To experience this project in all of its glory:
 
-
-## Steps
-
-To experience this repo in all of its glory:
-
-* Clone this repo
-
-```sh
-cd react-to-web-api
-npm install
-npm run dev
-```
-
+* Clone this repo and navigate to its folder in your terminal
+* Install dependencies with `npm install`
+* Apply the DB schema with `npm run knex migrate:latest`
+* Add some test data to the DB with `npm run knex seed:run`
+* Build and launch the server with `npm run dev`
 * Navigate to [http://localhost:3000](http://localhost:3000)
 
 
-## Exercise options
+## Exercise steps
 
 * Understand where and how each component is being used (you will find some code you can reuse. Remember DRY!)
 
   - Make small changes to confirm your hypotheses
   - Reset all changes you've made since last commit with `git checkout .`
 
-* The database can be updated by many users. Simulate this by making a 'refresh button'. You may have seen some functionality do something similar already. Open a second browser tab and make a new record for the list. Then, click your refresh button on your original tab and see if your component renders the new entry you created.  
+* The database can be updated by many users. Simulate this by making a 'refresh button'. You may have seen some functionality do something similar already. Open a second browser tab and make a new record for the list. Then, click your refresh button on your original tab and see if your component renders the new entry you created.
+
 Example steps you may take to complete this task: 
 
   - [ ] 1. Build the button and get it to log something when you click it

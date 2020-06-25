@@ -1,14 +1,15 @@
 {
   "name": "react-to-web-api",
   "version": "0.2.1",
-  "description": "A React demo with web APIs",
+  "description": "React components consuming Web APIs",
   "repository": "https://github.com/dev-academy-challenges/react-to-web-api.git",
   "main": "server/index.js",
   "scripts": {
-    "dev:client": "webpack --watch",
+    "dev:client": "webpack --watch --config client/webpack.config.js",
     "dev:server": "nodemon --watch server",
     "dev": "run-p dev:client dev:server",
-    "webpack:server": "webpack-dev-server --hot --inline --content-base public",
+    "knex": "knex --knexfile server/db/knexfile.js",
+    "webpack:server": "webpack-dev-server --hot --inline --content-base public --config client/webpack.config.js",
     "test": "jest --watchAll",
     "start": "node server"
   },
@@ -16,26 +17,27 @@
     "presets": [
       "@babel/preset-env",
       "@babel/preset-react"
-    ]
-  },
-  "jest": {
-    "setupFiles": [
-      "./tests/client/setup-dom.js"
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-class-properties",
+      "@babel/plugin-proposal-object-rest-spread"
     ]
   },
   "author": "EDA",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.10.3",
+    "@babel/plugin-proposal-class-properties": "^7.4.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.4.3",
     "@babel/preset-env": "^7.10.3",
     "@babel/preset-react": "^7.10.1",
+    "@testing-library/jest-dom": "^5.11.0",
+    "@testing-library/react": "^10.4.3",
     "babel-core": "^7.0.0-bridge.0",
-    "babel-jest": "^26.0.1",
+    "babel-jest": "^26.1.0",
     "babel-loader": "^8.1.0",
-    "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.2",
-    "jest": "^26.0.1",
-    "jsdom": "^16.2.2",
+    "jest": "^26.1.0",
+    "msw": "^0.19.5",
     "nodemon": "^2.0.4",
     "npm-run-all": "^4.1.5",
     "react": "^16.13.1",
