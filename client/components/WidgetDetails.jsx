@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default function WidgetDetails (props) {
-  const {widget, isVisible, hideDetails} = props
+  const { widget, isVisible, hideDetails } = props
   const classes = 'widget-details ' + (isVisible ? 'visible' : 'hidden')
 
   return (

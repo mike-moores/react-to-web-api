@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function WidgetListItem ({widget, showDetails}) {
+export default function WidgetListItem ({ widget, showDetails }) {
   return (
     <div className='widget-list-item'>
       {`${widget.name} `}
