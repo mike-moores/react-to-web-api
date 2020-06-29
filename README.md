@@ -12,32 +12,45 @@ To experience this project in all of its glory:
 
 ## Exercise steps
 
-* Understand where and how each component is being used (you will find some code you can reuse. Remember DRY!)
+### 0. Explore the codebase
+Take some time to understand where and how each component is being used (you will find some code you can reuse. Remember DRY!)
 
   - Make small changes to confirm your hypotheses
   - Reset all changes you've made since last commit with `git checkout .`
 
-* The database can be updated by many users. Simulate this by making a 'refresh button'. You may have seen some functionality do something similar already. Open a second browser tab and make a new record for the list. Then, click your refresh button on your original tab and see if your component renders the new entry you created.
+Familiarise yourself with the `getWidgets()` function called inside of `App.jsx`. Follow:
+  - The `getWidgets` function imported from `api.js`, where the API route to your backend (`api/v1/widgets`) is exposed
+  - The corresponding GET route on the server side in `widgets.js`
+  - Its call of the `getWidgets` function from `db.js`
+  - And the passing of that data all the way back to `App.jsx`
 
-Example steps you may take to complete this task: 
+You will follow the same structure, connecting your client and server sides via API route, to complete this exercise.
 
-  - [ ] 1. Build the button and get it to log something when you click it
-  - [ ] 2. Get the click to send a GET request to your API, and get the server to log something to show that the request has been made sucessfully
-  - [ ] 3. Get the server to respond with the list of current records/widgets.
-  - [ ] 4. Get the client-side to receive the response from the server, and update the client-side state so you can now see all the new records
+### 1. Add a widget
 
-* Extend the details that are stored in widgets - add a `rating` field to what is displayed and on the add form
+Steps you may take to complete this task: 
+
+- Create a POST route on the server side in `widgets.js`. Test you can get a response for it in Postman.
+- Create the database function to add a new widget. Remember that the incoming data should be in camelCase, but needs to be stored in your database in train_case. Call this function in your route and test it works in Postman.
+- Create an `addWidget` function in `api.js` that will make a post request to the route you just built.
+- Create a new `AddWidget` component containing a form. Import the `addWidget` function from `api.js` and hook it up to your form's submit handler. 
+- Once your widget has been added, have your widget list refresh so the new widget is visible. The `refreshList` function in `App` might come in handy.
+- Create an `Add Widget` button to conditionally hide and display your add form - check out how the `WidgetDetails` component does this for inspiration.
+
+
+### 2. Update a widget
+Add the ability to update a widget. Follow the same steps as you did for the add, but this time using a PUT route. You will also have to consider how to pass the id of the selected widget from your client to your server side.
+
+
+### 3. Next Steps
 
 * Add the ability to delete a widget
 
-* Add the ability to update a widget
+* Extend the details that are stored in the widgets database - add a `rating` field to what is displayed in details, and in your forms.
 
-  - [ ] 1. Build the button and get it to log something when you click it
-  - [ ] 2. Get the click to send something to your API, and get the server to prove it received something
-  - [ ] 3. Get the server to save something sent with click. Find a way to check something was save to the 'database' (remember we're only storing the database in memory in this exercise)
-  - [ ] 4. Get the server to send a message back to the user, and kick off some update of the user interface (you might want to force it to get all items again, like in the _refresh button_ case)
+* What functionality is missing? Add more components and API routes to perfect the app!
 
-* Add more components and write tests for them in `test` (the tests can be run with `npm test`)
+* Write tests for both your routes and your components. Create the test file in the same directory as the file you are testing, with `.test` before the file extension (e.g. `widgets.test.js`).There are a couple of test files already created for you, check them out to see how to get started. Tests can be run in the terminal with `npm test`.
 
 
 ## CORS
