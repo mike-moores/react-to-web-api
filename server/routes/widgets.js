@@ -6,7 +6,7 @@ const db = require('../db/db.js')
 router.get('/', (req, res) => {
   db.getWidgets()
     .then(widgets => {
-      res.send(widgets)
+      res.json(widgets)
     })
     .catch(err => {
       res.status(500).send(err.message)

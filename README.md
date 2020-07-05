@@ -28,12 +28,12 @@ You will follow the same structure, connecting your client and server sides via 
 
 ### 1. Add a widget
 
-Steps you may take to complete this task: 
+Steps you may take to complete this task:
 
 - Create a POST route on the server side in `widgets.js`. Test you can get a response for it in Postman.
 - Create the database function to add a new widget. Remember that the incoming data should be in camelCase, but needs to be stored in your database in train_case. Call this function in your route and test it works in Postman.
 - Create an `addWidget` function in `api.js` that will make a post request to the route you just built.
-- Create a new `AddWidget` component containing a form. Import the `addWidget` function from `api.js` and hook it up to your form's submit handler. 
+- Create a new `AddWidget` component containing a form. Import the `addWidget` function from `api.js` and hook it up to your form's submit handler.
 - Once your widget has been added, have your widget list refresh so the new widget is visible. The `refreshList` function in `App` might come in handy.
 - Create an `Add Widget` button to conditionally hide and display your add form - check out how the `WidgetDetails` component does this for inspiration.
 
