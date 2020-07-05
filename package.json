@@ -9,7 +9,7 @@
     "dev:server": "nodemon --watch server",
     "dev": "run-p dev:client dev:server",
     "knex": "knex --knexfile server/db/knexfile.js",
-    "webpack:server": "webpack-dev-server --hot --inline --content-base public --config client/webpack.config.js",
+    "webpack:server": "webpack-dev-server --hot --inline --content-base server/public --config client/webpack.config.js",
     "test": "jest --watchAll",
     "start": "node server"
   },
