@@ -6,6 +6,7 @@ export default function WidgetList (props) {
   return (
     <div className='widget-list'>
       <h2>List</h2>
+      <ul>
       {props.widgets.map(widget => {
         return <WidgetListItem
           key={widget.id}
@@ -13,6 +14,7 @@ export default function WidgetList (props) {
           hideDetails={props.hideDetails}
           showDetails={props.showDetails} />
       })}
+      </ul>
     </div>
   )
 }
