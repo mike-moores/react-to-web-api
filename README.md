@@ -39,7 +39,7 @@ Steps you may take to complete this task:
 
 
 ### 2. Update a widget
-Add the ability to update a widget. Follow the same steps as you did for the add, but this time using a PUT route. You will also have to consider how to pass the id of the selected widget from your client to your server side.
+Add the ability to update a widget. Follow the same steps as you did for the add, but this time using a PATCH route. You will also have to consider how to pass the id of the selected widget from your client to your server side.
 
 
 ### 3. Next Steps
