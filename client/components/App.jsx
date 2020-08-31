@@ -34,8 +34,7 @@ export default class App extends React.Component {
 
   refreshList = (err) => {
     this.setState({
-      error: err,
-      addWidgetVisible: false
+      error: err
     })
 
     getWidgets()
