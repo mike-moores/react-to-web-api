@@ -17,6 +17,7 @@ test('GET /api/v1/widgets', () => {
     .get('/api/v1/widgets')
     .expect(200)
     .then(res => {
-      expect(res.body.length).toBe(3)
+      expect(res.body).toHaveLength(3)
+      return null
     })
 })

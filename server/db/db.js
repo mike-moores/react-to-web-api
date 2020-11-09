@@ -9,4 +9,3 @@ module.exports = {
 function getWidgets (db = connection) {
   return db('widgets').select()
 }
-
