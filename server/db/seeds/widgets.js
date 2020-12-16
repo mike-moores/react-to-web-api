@@ -1,7 +1,7 @@
-exports.seed = knex => {
+exports.seed = (knex) => {
   // Deletes ALL existing entries
   return knex('widgets').del()
-    .then(function () {
+    .then(() => {
       // Inserts seed entries
       return knex('widgets').insert([
         { id: 1, name: 'Red widget', price: 23.45, mfg: 'Acme Inc.', inStock: 4 },
