@@ -1,9 +1,9 @@
-# A example React project that calls a local web API
+# The Wonderful World of Widgets
 
 This is a starter project to illustrate React components consuming a web API.
 
 
-## Steps
+## Setup
 
 To experience this repo in all of its glory:
 
@@ -18,60 +18,57 @@ npm run dev
 ```
 
 * Navigate to [http://localhost:3000](http://localhost:3000)
+## Getting Started
 
+This exercise reverses the roles from yesterday. Today the API has been (partially) built for you. Your job will be to build the React front end that consumes the API (using the node module `superagent`), and store the resulting data into component state.
 
-## Exercise
+Take a look around the project to make sure you're familiar with the layout. Take particular note of what is in your client folder, and the setup of the server routes in the back end.
+## Steps
 
-### Getting Started
+We're first going to get some widgets displaying on the page. The widget data is being stored in a database (on our server side), so we'll have to make an API call to retrieve the data.
 
-This exercise reverses the roles from yesterday. Today the API has been (partially) built for you. Your job will be to build the React front end to consume the API. To do this you will need to call the API from a React component using the node module `superagent`, and save the resulting data into state.
+1. Let's start by setting up the components. Add a `useState` hook to the `App.jsx` component, so we can store `widgets` in component state. Make the initial value an empty array.
 
-### Steps
+1. Also add a `useEffect` hook to `App`. `useEffect` accepts a function as its first parameter. Eventually we will call the API function from here, but for now just have this function do a `console.log('using the effect')`.
+    - Remember to pass an empty array to `useEffect` as the second parameter (so that the function only runs once - when the component mounts).
+    - Refresh the app in your browser the with DevTools console open. Make sure you can see your `useEffect` message.
 
-0. Take a look around your project to make sure you're familiar with the layout. Take particular note of what is in your client folder, and the setup of your server routes in the back end.
+1. Looking in our `server` folder, we can see that a database function called `getWidgets` has already been built in `db/db.js`. A GET route using that DB function is also in place in `routes/widgets.js`.
+   - Test that the route is working (and see what data it returns) by making a GET request to `http://localhost:3000/api/v1/widgets/` from Postman.
 
-1. Convert the App component to a stateful component. Make sure it still renders on localhost.
+1. Back in the client folder, you'll find a `getWidgets` function in `api.js`. This function uses `superagent` to make a GET request to `'/api/v1/widgets/'`, just like we were doing with Postman. It's then returning just the response body (which is the JSON data being sent from our server - we don't need the rest of the HTTP response data).
 
-2. Add a componentDidMount method to the component. Add the following `console.log` to the componentDidMount:
+1. Import this `getWidgets` function from `api.js` into `App.jsx`.
 
-``` js
-console.log('did mount')
-``` 
+1. In the function you passed to `useEffect`, call the `getWidgets` function.
+   - Superagent uses a promise-based interface, so you will need to chain a `.then()` block after this.
+   - Inside your `.then()` block, `console.log` the result of `getWidgets`.
+    - Refresh the app in your browser again. Make sure you can see the array of widget data in the console.
 
-And this one to the render method:
+1. Remove the `console.log` and instead use the `setWidgets` function (from your `useState`) to update state with the widget data from the API.
 
-``` js
-console.log('render')
-``` 
+1. Use the React Dev Tools to check that state updates as you expect.
 
-When you reload the page with the dev tools console open, take notice of the order that the logs occur in. What does this tell you about your code?
+1. Modify the `jsx` your component returns so that it displays the widgets from the component state. Perhaps you could use a `.map` here to render a new `<Widget />` component for each widget.
 
-3. Add a widgets property to the state. Make the initial value an empty array.
+## Next Steps
 
-4. Import the `api.js` file into the App file so we can use our api functions.  
+These next steps will be full stack, requiring you to make changes to both the front and back end.
 
-5. In your componentDidMount method, call the `getWidgets` function from your `api.js` file.  
-   - Remember superagent uses a promise-based interface, so you will need a `then()` block after this.
+- Add the ability to add a widget. The steps you might take to complete this could be:
+   - Create a POST route on the server side in `widgets.js`. Test you can get a response for it in Postman.
+   - Create the database function to add a new widget. Call this function in your route and test it works in Postman.
+   - Create an `addWidget` function in `api.js` that will make a POST request to the API route you just built.
+   - Create a new `AddWidget` component containing a form. Import the `addWidget` function from `api.js` and hook it up to your form's submit handler.
+   - Once your widget has been added, have your widget list refresh so the new widget is visible. Perhaps this involves reusing the `getWidgets` API function...
+   - Create an `Add Widget` button in `App` to conditionally render your add form.
 
-6. Use the `this.setState` function inside the then block to update state with the widget data from the API.
+- Add the ability to delete a widget (HTTP DELETE)
 
-7. Use the React Dev Tools to check that state updates as you expect.
+- Add the ability to update a widget (HTTP PATCH)
 
-8. Modify the render method of your component to display the widgets. Perhaps you could use a `.map` here to render a new `<Widget />` component for each widget.
-
-### Next Steps
-
-These next steps will require you to make changes to both the front and back end.
-
-- Add the ability to add a widget. This will also require adding a form component (a great opportunity to try a conditional render!)
-
-- Extend the details that are stored about widgets - add a `rating` field so we know how good those widgets really are. This will need to be added into what is displayed, and also onto the fields of the add form.
-
-- Add the ability to delete a widget
-
-- Add the ability to update a widget
+- Extend the database schema for the details that are stored about widgets - add a `rating` field so we know how good those widgets really are. This will need to be added into what is displayed, and also onto the fields of the add form.
 
 - Refactor your code into separate components (if it isn't already)
 
-- Write tests for your components. Some tests have already been written for you. Either try to make your code pass these, or rewrite them to match your own layout.
-
+- Write tests for your components.
