@@ -60,7 +60,7 @@ These next steps will be full stack, requiring you to make changes to both the f
    - Create the database function to add a new widget. Call this function in your route and test it works in Postman.
    - Create an `addWidget` function in `api.js` that will make a POST request to the API route you just built.
    - Create a new `AddWidget` component containing a form. Import the `addWidget` function from `api.js` and hook it up to your form's submit handler.
-   - Once your widget has been added, have your widget list refresh so the new widget is visible. Perhaps this involves reusing the `getWidgets` API function...
+   - Once your widget has been added, have your widget list refresh so the new widget is visible. Perhaps this could involve reusing the `getWidgets` API function, or thinking about the data you return from your POST route...
    - Create an `Add Widget` button in `App` to conditionally render your add form.
 
 - Add the ability to delete a widget (HTTP DELETE)
