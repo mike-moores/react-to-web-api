@@ -57,8 +57,8 @@
   },
   "dependencies": {
     "@babel/register": "^7.12.10",
+    "@vscode/sqlite3": "^5.0.7",
     "express": "^4.17.1",
-    "knex": "^0.21.13",
-    "sqlite3": "^5.0.0"
+    "knex": "^1.0.1"
   }
 }
