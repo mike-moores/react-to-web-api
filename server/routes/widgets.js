@@ -5,11 +5,11 @@ const db = require('../db/db')
 
 router.get('/', (req, res) => {
   db.getWidgets()
-    .then(widgets => {
+    .then((widgets) => {
       res.json(widgets)
       return null
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).send(err.message)
     })
 })

@@ -1,6 +1,6 @@
 import React from 'react'
 
-function App () {
+function App() {
   return (
     <div>
       <h1>Widgets for the win!</h1>
