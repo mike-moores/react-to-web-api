@@ -57,7 +57,7 @@ These next steps will be full stack, requiring you to make changes to both the f
 
 - Add the ability to add a widget. The steps you might take to complete this could be:
    - Create a POST route on the server side in `widgets.js`. Test you can get a response for it in Postman/Insomnia.
-   - Create the database function to add a new widget. Call this function in your route and test it works in Postman/Insomnisa.
+   - Create the database function to add a new widget. Call this function in your route and test it works in Postman/Insomnia.
    - Create an `addWidget` function in `api.js` that will make a POST request to the API route you just built.
    - Create a new `AddWidget` component containing a form. Import the `addWidget` function from `api.js` and hook it up to your form's submit handler.
    - Once your widget has been added, have your widget list refresh so the new widget is visible. Perhaps this could involve reusing the `getWidgets` API function, or thinking about the data you return from your POST route...
