@@ -9,23 +9,12 @@ export async function getWidgets(): Promise<Widget[]> {
   return widgets.body
 }
 
-export async function addNewWidget(form: NewWidget): Promise<Widget[]> {
-  const dbWidgets = await request.post(widgetUrl).send({ newWidget: form })
-  return dbWidgets.body
+export async function addNewWidget(form: NewWidget) {
+  const response = await request.post(widgetUrl).send(form)
+  return response.body
 }
 
-export async function deleteWidget(id: number): Promise<Widget[]> {
-  const url = `${widgetUrl}${id}`
-  const dbWidgets = await request.delete(url)
-  console.log('Delete widget', dbWidgets)
-  return dbWidgets.body
-}
-
-export async function editWidget(updatedWidget: Widget): Promise<Widget[]> {
-  const url = `${widgetUrl}${updatedWidget.id}`
-
-  const dbWidgets = await request.patch(url, updatedWidget)
-
-  console.log('Edit widget', dbWidgets)
-  return dbWidgets.body
+export async function deleteWidget(widgetId: number) {
+  const response = await request.delete(`${widgetUrl}/${widgetId}`)
+  return response.body
 }
