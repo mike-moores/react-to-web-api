@@ -20,3 +20,12 @@ export async function deleteWidget(id: number): Promise<Widget[]> {
   console.log('Delete widget', dbWidgets)
   return dbWidgets.body
 }
+
+export async function editWidget(updatedWidget: Widget): Promise<Widget[]> {
+  const url = `${widgetUrl}${updatedWidget.id}`
+
+  const dbWidgets = await request.patch(url, updatedWidget)
+
+  console.log('Edit widget', dbWidgets)
+  return dbWidgets.body
+}

@@ -1,6 +1,11 @@
 import { useEffect, useState, ChangeEvent, FormEvent } from 'react'
 // import { Widget } from './Widget.tsx'
-import { getWidgets, addNewWidget, deleteWidget } from '../apiClient'
+import {
+  getWidgets,
+  addNewWidget,
+  deleteWidget,
+  editWidget,
+} from '../apiClient'
 import { Widget } from '../../models/Widget'
 
 const initialWidgets: Widget[] = []
@@ -56,6 +61,22 @@ function App() {
     setWidgets(updatedWidgets)
   }
 
+  async function handleEdit(updatedWidget: Widget) {
+    console.log('Before edit:', widgets)
+    
+    await editWidget(updatedWidget)
+    
+    const updatedWidgets = await getWidgets();
+    
+    console.log('After edit:', widgets)
+
+    // const updatedWidgets = widgets.map((widget) =>
+    //   widget.id === updatedWidget.id ? updatedWidget : widget
+    // )
+
+    setWidgets(updatedWidgets)
+  }
+
   return (
     <div>
       <h1>Widgets for the win!</h1>
@@ -66,6 +87,11 @@ function App() {
               {' '}
               {name} {price} {mfg}
               <button onClick={() => handleDelete(id)}>Delete</button>
+              <button
+                onClick={() => handleEdit({ id, name, price, mfg, inStock: 0 })}
+              >
+                Edit
+              </button>
             </li>
           )
         })}

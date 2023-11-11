@@ -23,3 +23,24 @@ export function deleteWidget(id: number, db = connection): Promise<Widget[]> {
   console.log('Deleting this widget', id)
   return db('widgets').where('id', id).del().returning('*')
 }
+
+export async function editWidget(
+  id: number,
+  updatedWidgetData: WidgetData,
+  db = connection
+): Promise<Widget[]> {
+  console.log('Updating this widget', id)
+
+  const existingWidget = await db('widgets').where('id', id).first()
+  if (!existingWidget) {
+    throw new Error('Widget with id ${id} not found')
+  }
+
+  const { name, price, mfg, inStock } = updatedWidgetData
+  return db('widgets').where('id', id).update({
+    name,
+    price,
+    mfg,
+    inStock,
+  })
+}
