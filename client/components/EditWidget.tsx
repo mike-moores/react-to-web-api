@@ -21,6 +21,7 @@ const EditWidget: React.FC<Props> = ({
     price: 0,
     mfg: '',
     inStock: 0,
+    rating: 0,
   })
 
   useEffect(() => {
@@ -30,6 +31,7 @@ const EditWidget: React.FC<Props> = ({
         price: widgetToEdit.price,
         mfg: widgetToEdit.mfg,
         inStock: widgetToEdit.inStock,
+        rating: widgetToEdit.rating,
       })
     }
   }, [widgetToEdit])
@@ -94,7 +96,14 @@ const EditWidget: React.FC<Props> = ({
           value={form.inStock}
           onChange={handleChange}
         />
-
+        <label htmlFor="rating">Rating:</label>
+        <input
+          type="number"
+          id="rating"
+          name="rating"
+          value={form.rating}
+          onChange={handleChange}
+        />
         <button type="submit">Update widget</button>
         <button type="button" onClick={onCancel}>
           Cancel

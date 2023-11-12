@@ -3,6 +3,7 @@ export interface NewWidget {
   price: number
   mfg: string
   inStock: number
+  rating: number
 }
 
 export interface Widget {
@@ -11,6 +12,7 @@ export interface Widget {
   price: number
   mfg: string
   inStock: number
+  rating: number
 }
 
 export interface WidgetData {
@@ -18,4 +20,5 @@ export interface WidgetData {
   price: number
   mfg: string
   inStock: number
+  rating: number
 }

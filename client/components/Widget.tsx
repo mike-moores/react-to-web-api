@@ -11,6 +11,7 @@ export function Widget({ widgetData }: Prop) {
       <p>{widgetData.price}</p>
       <p>{widgetData.inStock}</p>
       <p>{widgetData.mfg}</p>
+      <p>{widgetData.rating}</p>
     </div>
   )
 }

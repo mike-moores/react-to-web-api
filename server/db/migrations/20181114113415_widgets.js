@@ -5,6 +5,7 @@ export async function up(knex) {
     table.integer('price')
     table.string('mfg')
     table.integer('inStock')
+    table.integer('rating')
   })
 }
 

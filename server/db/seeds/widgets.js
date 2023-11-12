@@ -11,6 +11,7 @@ export async function seed(knex) {
           price: 23.45,
           mfg: 'Acme Inc.',
           inStock: 4,
+          rating: 5
         },
         {
           id: 2,
@@ -18,6 +19,7 @@ export async function seed(knex) {
           price: 423.47,
           mfg: 'Acme Inc.',
           inStock: 8,
+          rating: 3
         },
         {
           id: 3,
@@ -25,6 +27,7 @@ export async function seed(knex) {
           price: 123.4,
           mfg: 'Acme Inc.',
           inStock: 3,
+          rating: 2
         },
       ])
     })

@@ -12,6 +12,7 @@ const initialWidgetState = {
   price: 0,
   mfg: '',
   inStock: 0,
+  rating: 0,
 }
 export default function AddWidgetForm(props: Props) {
   const [form, setForm] = useState<NewWidget>(initialWidgetState)
@@ -67,7 +68,16 @@ export default function AddWidgetForm(props: Props) {
             name="inStock"
           />
         </p>
-
+        <p>
+          <label htmlFor="rating">Rating:</label>
+          <br />
+          <input
+            id="rating"
+            onChange={handleChange}
+            value={form.rating}
+            name="rating"
+          />
+        </p>
         <button>Add widget</button>
       </form>
     </>
