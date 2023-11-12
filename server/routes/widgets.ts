@@ -1,5 +1,5 @@
 import express from 'express'
-import { getWidgets, addNewWidget, deleteWidget } from '../db/db.ts'
+import { getWidgets, addNewWidget, deleteWidget, editWidget } from '../db/db.ts'
 import { NewWidget } from '../../models/Widget.ts'
 
 const router = express.Router()
@@ -49,16 +49,16 @@ router.delete('/:id', async (req, res) => {
 
 // // edit a widget
 
-// router.patch('/:id', async (req, res) => {
-//   try {
-//     const id = Number(req.params.id)
-//     const updatedWidgetData = req.body.updatedWidgetData
-//     const widgets = await editWidget(id, updatedWidgetData)
-//     res.json(widgets)
-//   } catch (error) {
-//     console.error(error)
-//     res.sendStatus(500)
-//   }
-// })
+router.patch('/:id', async (req, res) => {
+  try {
+    const id = Number(req.params.id)
+    const updatedWidgetData = req.body
+    const widgets = await editWidget(id, updatedWidgetData)
+    res.json(widgets)
+  } catch (error) {
+    console.error(error)
+    res.sendStatus(500)
+  }
+})
 
 export default router
